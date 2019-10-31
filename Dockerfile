@@ -1,8 +1,8 @@
-FROM node:11.10-alpine
-RUN mkdir /src/app
+# FROM ubuntu:18.04
+FROM node:11.10-alpine  
 WORKDIR /src/app
-COPY ./package.json ./src/app/package.json
+COPY package.json package-lock.json /src/app/
 RUN npm install 
 COPY . /src/app
 EXPOSE 3000
-CMD ["node","index.js", "./data/test.xlsx"]
+ENTRYPOINT ["node","index.js"]
